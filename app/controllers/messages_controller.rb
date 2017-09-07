@@ -1,11 +1,42 @@
 class MessagesController < ApplicationController
-  before_action :find_message, only: [:show, :edit, :update, :destroy]
+  before_action :find_message, only: [:show, :edit, :update, :upvote, :downvote, :destroy]
   before_action :authenticate_user!, except: [:index , :show]
+
   def index
     @messages = Message.all.order("created_at DESC")
   end
 
+  def recent
+    @messages = Message.recent
+    render action: :index
+  end
+
+  def oldest
+    @messages = Message.oldest
+    render action: :index
+  end
+
+  def upvoted
+    @messages = Message.upvoted
+    render action: :index
+  end
+
+  def downvoted
+    @messages = Message.downvoted
+    render action: :index
+  end
+
   def show
+  end
+
+  def upvote
+    @message.upvote_from current_user
+    redirect_back(fallback_location: root_path)
+  end
+
+  def downvote
+    @message.downvote_from current_user
+    redirect_back(fallback_location: root_path)
   end
 
   def new
@@ -39,9 +70,16 @@ class MessagesController < ApplicationController
   end
 
   private
+  def self.sort_by(sort_param)
+    if %w(recent oldest downvoted upvoted).include? sort_param
+      send sort_param
+    else
+      all
+    end
+  end
 
     def message_params
-    params.require(:message).permit(:title, :description)
+      params.require(:message).permit(:title, :description, :video)
     end
 
     def find_message

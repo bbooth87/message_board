@@ -1,6 +1,62 @@
+
+<div class = "row justify-content-md-center">
+
+
+
+  <div class="card-header box">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <%= link_to "Recent", recent_messages_path, class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Oldest", oldest_messages_path, class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Upvoted", upvoted_messages_path, class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Downvoted", downvoted_messages_path, class: "nav-link active" %>
+      </li>
+    </ul>
+  </div>
 <% @messages.each do |m| %>
-<h2><%= m.title %></h2>
-<%= link_to "View Message", message_path(m), class: "btn btn-default" %>
+
+<div class = "container-fluid col-md-6 col-sm-12 custom-box card text-center">
+
+<div class = "card-header box">
+  <h2><%= link_to m.title, message_path(m) %></h2>
+  <p>Posted By: <%= image_tag m.user.avatar.url, size:25, class: 'img-rounded' %> <%= m.user.username %></p>
+  <h6><p><%= time_ago_in_words(m.created_at) %> ago </p></h6>
+</div>
+<div class = "card-body box">
+  <p><%= m.description.truncate(30) %>... </p>
+  <%= link_to "View Message", message_path(m), class: "btn btn-default btn-primary" %>
+</div>
+
+<div class = "caption card-footer box" style = "text=align:center;">
+  <%= link_to like_message_path(m), method: :get, remote: true, class: "like", method: :put do %>
+  <button type="button" class="btn" aria-label="Left Align">
+    <span class="glyphicon glyphicon-chevron-up glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= m.get_upvotes.size %></span>
+  </button>
+  <% end %>
+
+  <%= link_to dislike_message_path(m), method: :get, remote: true, class: "like", method: :put do %>
+  <button type="button" class="btn" aria-label="Left Align">
+    <span class="glyphicon glyphicon-chevron-down glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= m.get_downvotes.size %></span>
+  </button>
+  <% end %>
+
+
+</div>
+
+</div>
+
 <% end %>
 
-<%= link_to "New Message", new_message_path %>
+
+</div>
+
+
+<!-- <%= link_to "New Message", new_message_path %> -->

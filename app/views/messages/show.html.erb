@@ -1,6 +1,45 @@
-<h2><%= @message.title %></h2>
-<p>Posted By <%= @message.user.username %><%= time_ago_in_words(@message.created_at) %> ago</p>
-<p><%= @message.description %></p>
+<div class = "container-fluid" id = "message-show">
+  <div class = "col-md-12">
+
+
+  <div class = "jumbotron">
+    <h2><%= @message.title %>
+    </h2>
+  </div>
+
+Posted By: <%= image_tag @message.user.avatar.url, size:25, class: 'img-rounded' %> <%= @message.user.username %>
+
+   <p><%= time_ago_in_words(@message.created_at) %> ago</p><br>
+
+   <div class ="text-center">
+<% if @message.video? %>
+  <% if @message.video_url.include? "jpg" or @message.video_url.include? "jpeg" or @message.video_url.include? "gif" or @message.video_url.include? "png" %>
+  <%= image_tag @message.video_url %>
+  <% else %>
+  <%= video_tag @message.video_url, :controls => true %>
+<% end %>
+<% end %>
+</div>
+<div class = "background">
+  <p><%= @message.description %></p>
+</div>
+<div class = "caption" style = "text=align:center;">
+  <%= link_to like_message_path(@message), method: :get, remote: true, class: "like", method: :put do %>
+  <button type="button" class="btn" aria-label="Left Align">
+    <span class="glyphicon glyphicon-chevron-up glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= @message.get_upvotes.size %></span>
+  </button>
+  <% end %>
+
+  <%= link_to dislike_message_path(@message), method: :get, remote: true, class: "like", method: :put do %>
+  <button type="button" class="btn" aria-label="Left Align">
+    <span class="glyphicon glyphicon-chevron-down glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= @message.get_downvotes.size %></span>
+  </button>
+  <% end %>
+
+
+</div>
 
 <h3>Comments:</h3>
 <%= render @message.comments %>
@@ -8,10 +47,12 @@
 <h3>Leave a comment:</h3>
 <%= render 'comments/form' %>
 
-<%= link_to "Back", root_path %>
+<%= link_to "Back", root_path, class: "btn" %>
 <% if user_signed_in? %>
   <% if @message.user_id == current_user.id %>
-    <%= link_to "Edit", edit_message_path(@message) %>
-    <%= link_to "Delete", message_path(@message), method: :delete, data: { confirm: "Are You Sure" } %>
+    <%= link_to "Edit", edit_message_path(@message), class: "btn" %>
+    <%= link_to "Delete", message_path(@message), class: "btn", method: :delete, data: { confirm: "Are You Sure" } %>
 <% end %>
 <% end %>
+</div>
+</div>

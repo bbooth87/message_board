@@ -1,5 +1,10 @@
 {
   "name": "Message_Board",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "redux": "^3.7.2",
+    "video-react": "^0.8.6"
+  }
 }

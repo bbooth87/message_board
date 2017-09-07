@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
   def edit
   end
 
+
   def update
     if @comment.update(comment_params)
       redirect_to message_path(@message)

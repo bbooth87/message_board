@@ -1,24 +1,89 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body{
-  background:#192226 !important;
+
+$main-color: #00274c;
+$second-color: #ffcb05;
+$third-color: #999999;
+$cream: #FFFFCC;
+.like:hover {
+  text-decoration: none;
 }
 
-.navbar-inverse{
-  background:#222B31 !important;
-  border-bottom:4px solid #EE445F !important;
+.navbar-inverse .nav.navbar-nav > li > a {
+  color: lighten($main-color, 45%);
+}
+.card-body.box > p {
+  background-color: $third-color;
+}
+#mynav.navbar-inverse {
+  background: $main-color;
+  border-bottom:4px solid $second-color;
+}
+#mynav.navbar-inverse > a{
+  color: #fff;
+}
+div.container-fluid h2{
+  border: 2px solid $third-color;
+}
+.background{
+  color: #fff;
+  background: $third-color;
+  border-radius: 3px;
+  padding: 10px;
 }
 
-.navbar-brand{
-  font:12px Lato !important;
+
+//Message Index Nav
+ul.nav.nav-tabs.card-header-tabs {
+  border-bottom: none;
+  background-color: $third-color;
+  border-radius: 20px;
+}
+ul.nav.nav-tabs.card-header-tabs > li > a {
+  color: #000;
+}
+
+ul.nav.nav-tabs.card-header-tabs > li > a:hover , ul.nav.nav-tabs.card-header-tabs > li > a:active {
+    border-color: $second-color;
+    border-radius: 30px;
+}
+
+//index page borders
+div.container-fluid.col-md-6.custom-box.card.text-center, div#message-show.container-fluid, div.container-fluid.col-md-12.custom-box.card.text-center{
+  border: 3px solid saturate($second-color, 60%);
+  background-color: #fff;
+  -webkit-transition: all .5s ease-in-out;
+       -moz-transition: all .5s ease-in-out;
+}
+div.container-fluid.col-md-6.custom-box.card.text-center:hover, div#message-show.container-fluid:hover, div.container-fluid.col-md-12.custom-box.card.text-center:hover{
+  box-shadow: 0 0 10px darken($second-color, 25%);
+  border: 3px solid darken($second-color, 10%);
+  border-radius: 30px;
+  background-color: #fff;
+  -webkit-transition: all .5s ease-in-out;
+       -moz-transition: all .5s ease-in-out;
+}
+
+div#mybg.continer.box {
+  background: $third-color !important;
+}
+div.container .card-header.box{
+  border-bottom: saturate($second-color, 60%);
+}
+
+a.navbar-brand.mybrand {
+  font:12px Lato;
   text-transform:uppercase;
-  color:#FFF !important;
+  color:$second-color;
   letter-spacing:2px;
   margin-top:2px;
 }
+.container-fluid.background-custom{
+  background-color: $main-color;
+}
 
-.nav{
+#mynav.nav{
   margin-bottom:0px;
   a{
     font:500 11px Lato;
@@ -29,14 +94,16 @@ body{
     position:relative;
     z-index:1000;
   }
-  a:hover{
-    color:#FFF !important;
-  }
+
   li{
     position:relative;
   }
 }
 
+.jumbotron h2{
+  text-align: center;
+  background-color: $third-color;
+}
 .navbar-inverse .navbar-toggle{
   border:none;
 }
