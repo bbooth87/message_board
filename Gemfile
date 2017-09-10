@@ -23,6 +23,7 @@ gem 'rails', '~> 5.1.2'
 gem 'puma', '~> 3.7'
 gem 'devise'
 gem 'acts-as-taggable-on', '~> 4.0'
+ruby '2.3.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'font-awesome-rails'
@@ -50,6 +51,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+end
+group :production do
+  gem 'pg'
 end
 
 group :development do
