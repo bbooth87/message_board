@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   end
   resources :messages do
     member do
-      put "like" => "messages#upvote"
-      put "dislike" => "messages#downvote"
+      get "like" => "messages#upvote"
+      get "dislike" => "messages#downvote"
       end
     collection do
       get :recent
