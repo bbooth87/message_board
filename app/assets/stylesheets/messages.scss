@@ -13,7 +13,7 @@ $cream: #FFFFCC;
 .navbar-inverse .nav.navbar-nav > li > a {
   color: lighten($main-color, 45%);
 }
-.navbar-inverse .nav.navbar-nav > li > a.user-name {
+.navbar-inverse .nav.navbar-nav > li > a.username {
   color: $second-color;
 }
 .card-body.box > p {
@@ -53,13 +53,13 @@ ul.nav.nav-tabs.card-header-tabs > li > a:hover , ul.nav.nav-tabs.card-header-ta
 }
 
 //index page borders
-div.container.col-md-6.custom-box.card.text-center, div#message-show.container-fluid, div.container.col-md-12.custom-box.card.text-center{
+div.container-fluid.col-md-6.custom-box.card.text-center, div#message-show.container-fluid, div.container-fluid.col-md-12.custom-box.card.text-center{
   border: 3px solid saturate($second-color, 60%);
   background-color: #fff;
   -webkit-transition: all .5s ease-in-out;
        -moz-transition: all .5s ease-in-out;
 }
-div.container.col-md-6.custom-box.card.text-center:hover, div#message-show.container:hover, div.container-fluid.col-md-12.custom-box.card.text-center:hover{
+div.container-fluid.col-md-6.custom-box.card.text-center:hover, div#message-show.container-fluid:hover, div.container-fluid.col-md-12.custom-box.card.text-center:hover{
   box-shadow: 0 0 10px darken($second-color, 25%);
   border: 3px solid darken($second-color, 10%);
   border-radius: 30px;
