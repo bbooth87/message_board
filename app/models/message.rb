@@ -3,7 +3,7 @@ class Message < ApplicationRecord
   has_many :comments
   mount_uploader :video, VideoUploader
   acts_as_votable
-  scope :recent, -> { order("created_at DESC") }
+  scope :recent, -> { order(created_at: :desc) }
   scope :oldest, -> { order(created_at: :asc) }
   scope :upvoted, -> { order(:cached_votes_up => :desc) }
   scope :downvoted, -> { order(:cached_votes_down => :desc) }
