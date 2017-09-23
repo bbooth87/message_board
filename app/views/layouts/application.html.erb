@@ -40,7 +40,7 @@
     </ul>
     <ul class = "nav navbar-nav navbar-right">
     <% if user_signed_in? %>
-      <li><a><%= current_user.username %></a></li>
+      <li><a>Logged In As: <%= current_user.username %></a></li>
       <li><p><%= image_tag current_user.avatar.url, size:25, class: "user-pic-nav navbar-text" %></p></li>
     <% end %>
     </ul>
