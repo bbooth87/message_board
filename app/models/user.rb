@@ -10,3 +10,4 @@ class User < ApplicationRecord
   acts_as_voter       
 
 end
+# File attributes messages and comments to users, allows users to upload avatar, and adds devise functionality to user. 
