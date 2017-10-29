@@ -11,3 +11,4 @@ class Message < ApplicationRecord
 
 
 end
+#Allows filterable options allow's videos to be uploaded and allow comments on messages. This file also attributes messages to users.
