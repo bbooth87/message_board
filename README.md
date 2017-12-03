@@ -1,11 +1,11 @@
-#Message Board
+# Message Board
 
 This App is Deplyed @ https://boiling-beach-61535.herokuapp.com/
 
 This is a Simple Message Board App made wth Ruby on Rails(Ruby version 2.3.3 Rails version 5.1.2)
 You can upload text, video, and image messages. 
 
-##Getting Started on Mac
+## Getting Started
 
 Install [RVM](https://rvm.io/) and [MySQL]()
 
